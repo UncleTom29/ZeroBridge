@@ -1,0 +1,109 @@
+
+# Coordinator URL (read-only access)
+coordinator_url = "http://localhost:8080"
+
+# Database
+database_path = "data/relayer.db"
+
+# Polling interval (seconds)
+poll_interval = 5
+
+# Maximum concurrent tasks
+max_concurrent_tasks = 10
+
+[relayer_identity]
+address = "0xYOUR_RELAYER_ADDRESS"
+name = "my-relayer-node-1"
+reputation = 100
+
+[staking]
+minimum_stake = 100000000000000000000  # 100 ETH (testnet uses much less)
+current_stake = 150000000000000000000  # 150 ETH
+hub_contract = "0x..."  # ZeroBridgeHub address on Ethereum
+hub_chain_id = 11155111  # Ethereum Sepolia
+auto_restake = true
+
+[p2p]
+listen_addr = "0.0.0.0"
+port = 9000
+bootstrap_peers = [
+    "/ip4/relay1.zerobridge.io/tcp/9000/p2p/12D3KooWRelayer1"
+]
+max_peers = 50
+
+[p2p.gossip]
+heartbeat_interval = 30
+message_ttl = 300
+
+# Chain configs for relayer (with private keys for signing)
+[[chains]]
+chain_id = 11155111
+name = "Ethereum Sepolia"
+chain_type = "ethereum"
+rpc_url = "https://sepolia.infura.io/v3/YOUR_KEY"
+ws_url = "wss://sepolia.infura.io/ws/v3/YOUR_KEY"
+gateway_address = "0x..."
+private_key = "0x..."  # KEEP SECRET!
+
+[chains.gas_strategy]
+strategy_type = "fast"
+max_gas_price = 100  # gwei
+multiplier = 1.2
+
+[chains.retry_config]
+max_retries = 3
+initial_backoff = 5
+max_backoff = 300
+
+# ============================================
+# config/networks.toml
+# Network Definitions
+# ============================================
+
+[networks.ethereum_sepolia]
+chain_id = 11155111
+name = "Ethereum Sepolia"
+rpc_url = "https://sepolia.infura.io/v3/"
+explorer_url = "https://sepolia.etherscan.io"
+native_currency = "ETH"
+block_time = 12
+
+[networks.base_sepolia]
+chain_id = 84532
+name = "Base Sepolia"
+rpc_url = "https://sepolia.base.org"
+explorer_url = "https://sepolia.basescan.org"
+native_currency = "ETH"
+block_time = 2
+
+[networks.polygon_amoy]
+chain_id = 80002
+name = "Polygon Amoy"
+rpc_url = "https://rpc-amoy.polygon.technology"
+explorer_url = "https://amoy.polygonscan.com"
+native_currency = "MATIC"
+block_time = 2
+
+[networks.solana_devnet]
+chain_id = 2
+name = "Solana Devnet"
+rpc_url = "https://api.devnet.solana.com"
+explorer_url = "https://explorer.solana.com?cluster=devnet"
+native_currency = "SOL"
+block_time = 0.4
+
+[networks.near_testnet]
+chain_id = 3
+name = "NEAR Testnet"
+rpc_url = "https://rpc.testnet.near.org"
+explorer_url = "https://testnet.nearblocks.io"
+native_currency = "NEAR"
+block_time = 1
+
+[networks.mina_berkeley]
+chain_id = 4
+name = "Mina Berkeley"
+rpc_url = "https://api.berkeley.minaexplorer.com"
+explorer_url = "https://berkeley.minaexplorer.com"
+native_currency = "MINA"
+block_time = 180  # 3 minutes

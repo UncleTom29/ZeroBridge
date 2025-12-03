@@ -1,0 +1,126 @@
+
+[zcash]
+network = "testnet"
+rpc_url = "http://localhost:18232"
+rpc_user = "zcashrpc"
+rpc_password = "change_this_password_in_production"
+spending_key = "secret-extended-key-test1qwerty..."  # Generate with: zcash-cli z_getnewaddress
+confirmations = 6
+enable_orchard = true
+enable_sapling = true
+
+poll_interval = 10
+
+
+tokens_config = "config/tokens.toml"
+
+# API server configuration
+[api]
+host = "0.0.0.0"
+port = 8080
+cors_origins = ["http://localhost:3000", "https://app.zerobridge.io"]
+
+# Database
+[database]
+path = "data/coordinator.db"
+max_connections = 10
+
+
+
+[[chains]]
+chain_id = 11155111  
+name = "Ethereum Sepolia"
+chain_type = "ethereum"
+rpc_url = "https://sepolia.infura.io/v3/YOUR_INFURA_KEY"
+ws_url = "wss://sepolia.infura.io/ws/v3/YOUR_INFURA_KEY"
+gateway_address = "0x..." 
+enabled = true
+confirmations = 12
+
+[[chains]]
+chain_id = 84532  
+name = "Base Sepolia"
+chain_type = "base"
+rpc_url = "https://sepolia.base.org"
+ws_url = "wss://sepolia.base.org"
+gateway_address = "0x..."
+start_block = 1000000
+enabled = true
+confirmations = 12
+
+[[chains]]
+chain_id = 80002 
+name = "Polygon Amoy"
+chain_type = "polygon"
+rpc_url = "https://rpc-amoy.polygon.technology"
+ws_url = "wss://rpc-amoy.polygon.technology"
+gateway_address = "0x..."
+start_block = 5000000
+enabled = true
+confirmations = 20
+
+[[chains]]
+chain_id = 2 
+name = "Solana Devnet"
+chain_type = "solana"
+rpc_url = "https://api.devnet.solana.com"
+gateway_address = "ZeroBridge111111111111111111111111111111111"  # Program ID
+start_block = 0
+enabled = true
+confirmations = 32
+
+[[chains]]
+chain_id = 3  
+name = "NEAR Testnet"
+chain_type = "near"
+rpc_url = "https://rpc.testnet.near.org"
+gateway_address = "zerobridge.testnet"
+start_block = 0
+enabled = true
+confirmations = 2
+
+[[chains]]
+chain_id = 4  
+name = "Mina Berkeley"
+chain_type = "mina"
+rpc_url = "https://api.berkeley.minaexplorer.com"
+gateway_address = "B62qk..."  # zkApp address
+start_block = 0
+enabled = true
+confirmations = 3
+
+
+
+[liquidity]
+# Rebalance when utilization exceeds this threshold
+rebalance_threshold = 0.8  # 80%
+
+# Target utilization after rebalancing
+target_utilization = 0.5  # 50%
+
+# Minimum liquidity per chain (in USD equivalent)
+min_liquidity_usd = 10000  # $10k
+
+# Maximum single rebalance amount (in USD equivalent)
+max_rebalance_usd = 100000  # $100k
+
+# Rebalance check interval (seconds)
+rebalance_interval = 3600  # 1 hour
+
+# ============================================
+# Security Configuration
+# ============================================
+
+[security]
+# Coordinator signing key for authorizing withdrawals
+coordinator_private_key = "0x..."  # KEEP SECRET!
+
+# Maximum withdrawal amount without additional verification
+max_withdrawal_usd = 50000  # $50k
+
+# Rate limits (per hour)
+max_deposits_per_hour = 1000
+max_withdrawals_per_hour = 500
+
+# Circuit breaker - pause if volume spikes
+circuit_breaker_threshold = 10.0  # 10x normal volume

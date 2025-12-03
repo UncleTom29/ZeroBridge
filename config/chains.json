@@ -1,0 +1,121 @@
+{
+  "chains": [
+    {
+      "chainId": 1,
+      "name": "Ethereum Mainnet",
+      "rpcUrl": "https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
+      "wsUrl": "wss://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
+      "explorerUrl": "https://etherscan.io",
+      "hubContract": "0x0000000000000000000000000000000000000000",
+      "nativeCurrency": {
+        "name": "Ether",
+        "symbol": "ETH",
+        "decimals": 18
+      },
+      "confirmations": 12,
+      "enabled": true
+    },
+    {
+      "chainId": 8453,
+      "name": "Base",
+      "rpcUrl": "https://mainnet.base.org",
+      "wsUrl": "wss://mainnet.base.org",
+      "explorerUrl": "https://basescan.org",
+      "hubContract": "0x0000000000000000000000000000000000000000",
+      "nativeCurrency": {
+        "name": "Ether",
+        "symbol": "ETH",
+        "decimals": 18
+      },
+      "confirmations": 10,
+      "enabled": true
+    },
+    {
+      "chainId": 0,
+      "name": "NEAR Protocol",
+      "rpcUrl": "https://rpc.mainnet.near.org",
+      "explorerUrl": "https://explorer.near.org",
+      "hubContract": "zerobridge.near",
+      "nativeCurrency": {
+        "name": "NEAR",
+        "symbol": "NEAR",
+        "decimals": 24
+      },
+      "confirmations": 2,
+      "enabled": true,
+      "chainType": "near"
+    },
+    {
+      "chainId": 0,
+      "name": "Solana",
+      "rpcUrl": "https://api.mainnet-beta.solana.com",
+      "wsUrl": "wss://api.mainnet-beta.solana.com",
+      "explorerUrl": "https://explorer.solana.com",
+      "hubContract": "ZBridg111111111111111111111111111111111111",
+      "nativeCurrency": {
+        "name": "Solana",
+        "symbol": "SOL",
+        "decimals": 9
+      },
+      "confirmations": 32,
+      "enabled": true,
+      "chainType": "solana"
+    },
+    {
+      "chainId": 23448594291968334,
+      "name": "Starknet",
+      "rpcUrl": "https://starknet-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
+      "explorerUrl": "https://starkscan.co",
+      "hubContract": "0x0",
+      "nativeCurrency": {
+        "name": "Ether",
+        "symbol": "ETH",
+        "decimals": 18
+      },
+      "confirmations": 5,
+      "enabled": true,
+      "chainType": "starknet"
+    },
+    {
+      "chainId": 0,
+      "name": "Osmosis",
+      "rpcUrl": "https://rpc.osmosis.zone",
+      "wsUrl": "wss://rpc.osmosis.zone/websocket",
+      "explorerUrl": "https://www.mintscan.io/osmosis",
+      "hubContract": "osmo1...",
+      "nativeCurrency": {
+        "name": "Osmosis",
+        "symbol": "OSMO",
+        "decimals": 6
+      },
+      "confirmations": 1,
+      "enabled": true,
+      "chainType": "cosmos"
+    }
+  ],
+  "supportedTokens": {
+    "ETH": {
+      "symbol": "ETH",
+      "decimals": 18,
+      "addresses": {
+        "1": "0x0000000000000000000000000000000000000000",
+        "8453": "0x0000000000000000000000000000000000000000"
+      }
+    },
+    "USDC": {
+      "symbol": "USDC",
+      "decimals": 6,
+      "addresses": {
+        "1": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "8453": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+      }
+    },
+    "USDT": {
+      "symbol": "USDT",
+      "decimals": 6,
+      "addresses": {
+        "1": "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+      }
+    }
+  }
+}
